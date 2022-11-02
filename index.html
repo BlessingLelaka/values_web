@@ -22,8 +22,32 @@
         
         <link href="css/style.css" rel="stylesheet">
     </head>
-
     <body>
+        <script>
+            const firebaseConfig = {
+            apiKey: "AIzaSyDSdfb-mAPqCkQRDrtPNNV6DjXvu-k0geM",
+            authDomain: "values-project-3b188.firebaseapp.com",
+            projectId: "values-project-3b188",
+            storageBucket: "values-project-3b188.appspot.com",
+            messagingSenderId: "1343861824",
+            appId: "1:1343861824:web:93c416de1619d7bcef1ba5",
+            measurementId: "G-0BBGZEX6QL"
+            };
+
+            // Initialize Firebase
+            const app = initializeApp(firebaseConfig);
+            const analytics = getAnalytics(app);
+
+            function writeData(){
+                firebase.database().ref("contact_us").set({
+                    name: document.getElementById("name").value,
+                    email:document.getElementById("email").value,
+                    phone_num:document.getElementById("phone_num").value,
+                    subject:document.getElementById("subject").value,
+                    message:document.getElementById("message").value
+                });
+            }
+        </script> 
         <div class="wrapper">
            
             <div class="header">
@@ -109,22 +133,23 @@
                                     <div class="card-body">
                                         <form>
                                             <div class="mb-3">
-                                                <input type="text" class="form-control form-control-sm" placeholder="Name">
+                                                <input type="text" class="form-control form-control-sm" placeholder="Name" id="name">
                                             </div>
                                             <div class="mb-3">
-                                                <input type="email" class="form-control form-control-sm" placeholder="Email">
+                                                <input type="email" class="form-control form-control-sm" placeholder="Email" id="email">
                                             </div>
                                             <div class="mb-3">
-                                                <input type="tel" class="form-control form-control-sm" placeholder="Phone">
+                                                <input type="tel" class="form-control form-control-sm" placeholder="Phone" id="phone">
                                             </div>
                                             <div class="mb-3">
-                                                <input type="text" class="form-control form-control-sm" placeholder="Subject">
+                                                <input type="text" class="form-control form-control-sm" placeholder="Subject" id="subject">
                                             </div>
                                             <div class="mb-3">
-                                                <textarea rows="5" class="form-control form-control-sm" placeholder="Your Message"></textarea>
+                                                <textarea rows="5" class="form-control form-control-sm" placeholder="Your Message"id="message"></textarea>
                                             </div>
                                             <div class="mb-3">
                                                 <input type="submit" class="btn btn-success btn-sm" value="Send Message">
+                                                <button onclick="writeData">Submit</button>
                                             </div>
                                         </form>
                                     </div>
